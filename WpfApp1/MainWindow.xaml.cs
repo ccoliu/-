@@ -27,9 +27,12 @@ namespace WpfApp1
         public double Xratio = 1280.0 / 512;
         public double Yratio = 720.0 / 424;
 
-        public int time = 5;
+        public static int time = 60;
         public bool start = false;
         public int score = 0;
+        public int button_num = 5;
+        public int available_button = 0;
+        public int current_button_num = 0;
 
         private CoordinateMapper coodinateMapper = null;
         private Body[] bodies = null;
@@ -69,6 +72,12 @@ namespace WpfApp1
 
         private void Summary()
         {
+            SquirrelButton1.Visibility = Visibility.Hidden;
+            SquirrelButton2.Visibility = Visibility.Hidden;
+            SquirrelButton3.Visibility = Visibility.Hidden;
+            SquirrelButton4.Visibility = Visibility.Hidden;
+            SquirrelButton5.Visibility = Visibility.Hidden;
+
             Replay.Visibility = Visibility.Visible;
             Exit.Visibility = Visibility.Visible;
             Summary_word.Visibility = Visibility.Visible;
@@ -80,11 +89,56 @@ namespace WpfApp1
             Time.Visibility = Visibility.Visible;
 
             ImageSource.Source = new BitmapImage(new Uri("GameStart.jpg", UriKind.RelativeOrAbsolute));
-
             for (int i = time; i >= 0; i--)
             {
                 Time.Text = i.ToString();
                 await Task.Delay(1000);
+                available_button = 1 + (60 - i) / 15;
+                while (current_button_num != available_button)
+                {
+                    var rand = new Random();
+                    int randNum = rand.Next(5);
+                    if (randNum == 0)
+                    {
+                        if (SquirrelButton1.Visibility == Visibility.Hidden)
+                        {
+                            SquirrelButton1.Visibility = Visibility.Visible;
+                            current_button_num++;
+                        }
+                    }
+                    if (randNum == 1)
+                    {
+                        if (SquirrelButton2.Visibility == Visibility.Hidden) 
+                        {
+                            SquirrelButton2.Visibility = Visibility.Visible;
+                            current_button_num++;
+                        }
+                    }
+                    if (randNum == 2)
+                    {
+                        if (SquirrelButton3.Visibility == Visibility.Hidden)
+                        {
+                            SquirrelButton3.Visibility = Visibility.Visible;
+                            current_button_num++;
+                        }
+                    }
+                    if (randNum == 3)
+                    {
+                        if (SquirrelButton4.Visibility == Visibility.Hidden)
+                        {
+                            SquirrelButton4.Visibility = Visibility.Visible;
+                            current_button_num++;
+                        }
+                    }
+                    if (randNum == 4)
+                    {
+                        if (SquirrelButton5.Visibility == Visibility.Hidden)
+                        {
+                            SquirrelButton5.Visibility = Visibility.Visible;
+                            current_button_num++;
+                        }
+                    }
+                }
             }
 
             Summary();
@@ -96,13 +150,26 @@ namespace WpfApp1
 
             StartGame();
         }
+
+        private void SquirrelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            if (button.Visibility == Visibility.Visible)
+            {
+                score += 50;
+                button.Visibility = Visibility.Hidden;
+                current_button_num--;
+            }
+        }
+
         private void Replay_Click(object sender, RoutedEventArgs e)
         {
             Replay.Visibility = Visibility.Hidden;
             Summary_word.Visibility = Visibility.Hidden;
             Score_str.Visibility = Visibility.Hidden;
+            Exit.Visibility = Visibility.Hidden;
             score = 0;
-
+            current_button_num = 0;
             StartGame();
         }
 

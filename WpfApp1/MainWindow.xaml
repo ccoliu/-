@@ -15,6 +15,11 @@
             <TextBox x:Name="Score_str" TextWrapping="Wrap" FontSize="36" Background="Transparent" BorderBrush="Transparent" Height="82" Canvas.Left="597" Canvas.Top="350" Width="152" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Button x:Name="Replay" Content="再來一次" Canvas.Left="494" Canvas.Top="426" Height="61" Width="131" Click="Replay_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
             <Button x:Name="Exit" Content="離開" Canvas.Left="494" Canvas.Top="490" Height="61" Width="131" Click="Exit_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
+            <Button x:Name="SquirrelButton1" Content="Squirrel" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="62" Canvas.Left="181" Canvas.Top="238" Width="126" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
+            <Button x:Name="SquirrelButton2" Content="Squirrel" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="62" Canvas.Left="496" Canvas.Top="238" Width="126" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
+            <Button x:Name="SquirrelButton3" Content="Squirrel" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="62" Canvas.Left="807" Canvas.Top="238" Width="126" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"/>
+            <Button x:Name="SquirrelButton4" Content="Squirrel" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="62" Canvas.Left="318" Canvas.Top="458" Width="126" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"/>
+            <Button x:Name="SquirrelButton5" Content="Squirrel" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="62" Canvas.Left="698" Canvas.Top="458" Width="126" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
         </Canvas>
         <TextBox x:Name="Title" TextWrapping="Wrap" Text="打地鼠" Margin="573,217,555,406" FontSize="36" Background="Transparent" BorderBrush="Transparent"/>
     </Grid>
