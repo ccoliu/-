@@ -67,5 +67,21 @@ namespace WpfApp1.Properties
                 resourceCulture = value;
             }
         }
+
+        internal static string RunningStatusText
+        {
+            get
+            {
+                return ResourceManager.GetString("RunningStatusText", resourceCulture);
+            }
+        }
+
+        internal static string SensorNotAvailableStatusText
+        {
+            get
+            {
+                return ResourceManager.GetString("SensorNotAvailableStatusText", resourceCulture);
+            }
+        }
     }
 }

@@ -1,13 +1,19 @@
-﻿<Window x:Class="WpfApp1.MainWindow"
+﻿<Window x:Name="mainwindow" x:Class="WpfApp1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280">
+        Title="MainWindow" Height="720" Width="1280"
+        Loaded="MainWindow_Loaded">
+    <Window.Resources>
+        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e" />
+        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
+        <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
+    </Window.Resources>
     <Grid>
-        <Image x:Name="ImageSource" HorizontalAlignment="Left" Height="720" Margin="0,0,-1.667,-29.333" VerticalAlignment="Top" Width="1275" Source="Forest.jpg" />
+        <Image x:Name="ImageSource" HorizontalAlignment="Left" Height="720" Margin="0,0,-1.667,-29.333" VerticalAlignment="Top" Width="1275" Source="Forest.jpg"/>
         <Canvas x:Name="ImageCanvas" HorizontalAlignment="Left" Height="720" Margin="70,0,-76.667,-29.333" VerticalAlignment="Top" Width="1280" Background="Transparent" >
             <Button x:Name="TitleButton" Content="開始" Canvas.Left="494" Canvas.Top="360" Height="61" Width="131" Click="TitleButton_Click"/>
             <TextBox x:Name="Time" TextWrapping="Wrap" FontSize="36" Background="Transparent" BorderBrush="Transparent" Height="82" Canvas.Left="-22" Canvas.Top="638" Width="152" Text="60" Visibility="Hidden"/>
@@ -24,6 +30,6 @@
             <Button x:Name="SquirrelButton7" Content="Squirrel_7" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="295" Canvas.Top="285" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Button x:Name="SquirrelButton8" Content="Squirrel_8" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="19" Canvas.Top="578" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
         </Canvas>
-        <TextBox x:Name="Title" TextWrapping="Wrap" Text="打地鼠" Margin="573,217,555,406" FontSize="36" Background="Transparent" BorderBrush="Transparent" />
+        <TextBox x:Name="GameTitle" TextWrapping="Wrap" Text="打地鼠" Margin="562,215,566,408" FontSize="36" Background="Transparent" BorderBrush="Transparent" />
     </Grid>
 </Window>
