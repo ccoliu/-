@@ -77,6 +77,9 @@ namespace WpfApp1
             SquirrelButton3.Visibility = Visibility.Hidden;
             SquirrelButton4.Visibility = Visibility.Hidden;
             SquirrelButton5.Visibility = Visibility.Hidden;
+            SquirrelButton6.Visibility = Visibility.Hidden;
+            SquirrelButton7.Visibility = Visibility.Hidden;
+            SquirrelButton8.Visibility = Visibility.Hidden;
 
             Replay.Visibility = Visibility.Visible;
             Exit.Visibility = Visibility.Visible;
@@ -97,7 +100,7 @@ namespace WpfApp1
                 while (current_button_num != available_button)
                 {
                     var rand = new Random();
-                    int randNum = rand.Next(5);
+                    int randNum = rand.Next(8);
                     if (randNum == 0)
                     {
                         if (SquirrelButton1.Visibility == Visibility.Hidden)
@@ -135,6 +138,30 @@ namespace WpfApp1
                         if (SquirrelButton5.Visibility == Visibility.Hidden)
                         {
                             SquirrelButton5.Visibility = Visibility.Visible;
+                            current_button_num++;
+                        }
+                    }
+                    if (randNum == 5)
+                    {
+                        if (SquirrelButton6.Visibility == Visibility.Hidden)
+                        {
+                            SquirrelButton6.Visibility = Visibility.Visible;
+                            current_button_num++;
+                        }
+                    }
+                    if (randNum == 6)
+                    {
+                        if (SquirrelButton7.Visibility == Visibility.Hidden)
+                        {
+                            SquirrelButton7.Visibility = Visibility.Visible;
+                            current_button_num++;
+                        }
+                    }
+                    if (randNum == 7)
+                    {
+                        if (SquirrelButton8.Visibility == Visibility.Hidden)
+                        {
+                            SquirrelButton8.Visibility = Visibility.Visible;
                             current_button_num++;
                         }
                     }
