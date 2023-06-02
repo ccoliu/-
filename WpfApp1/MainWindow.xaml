@@ -5,31 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280"
+        Title="MainWindow" Height="600" Width="700"
         Loaded="MainWindow_Loaded">
     <Window.Resources>
-        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e" />
+        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e"  />
         <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
         <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
     </Window.Resources>
     <Grid>
-        <Image x:Name="ImageSource" HorizontalAlignment="Left" Height="720" Margin="0,0,-1.667,-29.333" VerticalAlignment="Top" Width="1275" Source="Forest.jpg"/>
-        <Canvas x:Name="ImageCanvas" HorizontalAlignment="Left" Height="720" Margin="70,0,-76.667,-29.333" VerticalAlignment="Top" Width="1280" Background="Transparent" >
-            <Button x:Name="TitleButton" Content="開始" Canvas.Left="494" Canvas.Top="360" Height="61" Width="131" Click="TitleButton_Click"/>
-            <TextBox x:Name="Time" TextWrapping="Wrap" FontSize="36" Background="Transparent" BorderBrush="Transparent" Height="82" Canvas.Left="-22" Canvas.Top="638" Width="152" Text="60" Visibility="Hidden"/>
-            <TextBox x:Name="Summary_word" TextWrapping="Wrap" Text="遊戲結束！&#xD;&#xA;你的分數：" FontSize="36" Background="White" BorderBrush="Transparent" Height="116" Canvas.Left="394" Canvas.Top="302" Width="312" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
-            <TextBox x:Name="Score_str" TextWrapping="Wrap" FontSize="36" Background="Transparent" BorderBrush="Transparent" Height="82" Canvas.Left="597" Canvas.Top="350" Width="152" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
-            <Button x:Name="Replay" Content="再來一次" Canvas.Left="494" Canvas.Top="426" Height="61" Width="131" Click="Replay_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
-            <Button x:Name="Exit" Content="離開" Canvas.Left="494" Canvas.Top="490" Height="61" Width="131" Click="Exit_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
-            <Button x:Name="SquirrelButton1" Content="Squirrel_1" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="34" Canvas.Top="303" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" RenderTransformOrigin="-0.169,-0.29"/>
-            <Button x:Name="SquirrelButton2" Content="Squirrel_2" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="575" Canvas.Top="343" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
-            <Button x:Name="SquirrelButton3" Content="Squirrel_3" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="815" Canvas.Top="358" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"/>
-            <Button x:Name="SquirrelButton4" Content="Squirrel_4" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="250" Canvas.Top="505" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"/>
-            <Button x:Name="SquirrelButton5" Content="Squirrel_5" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="790" Canvas.Top="535" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
-            <Button x:Name="SquirrelButton6" Content="Squirrel_6" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="515" Canvas.Top="573" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
-            <Button x:Name="SquirrelButton7" Content="Squirrel_7" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="295" Canvas.Top="285" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
-            <Button x:Name="SquirrelButton8" Content="Squirrel_8" Click="SquirrelButton_Click" Background="#FFDDDDDD" Height="42" Canvas.Left="19" Canvas.Top="578" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Canvas x:Name="ImageCanvas" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="700" Background="Transparent" >
+            <Image x:Name="ImageSource" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="700" Source="Forest.jpg"/>
+            <Image x:Name="TrackImage" HorizontalAlignment="Left" Height="600" Width="700" Source="{Binding trackImage}" Opacity="0.5" />
+            <Button x:Name="TitleButton" Content="開始" Canvas.Left="293" Canvas.Top="330" Height="61" Width="130" Click="TitleButton_Click"/>
+            <TextBox x:Name="Time" TextWrapping="Wrap" FontSize="36" Background="Transparent" BorderBrush="Transparent" Height="82" Canvas.Left="20" Canvas.Top="638" Width="152" Text="60" Visibility="Hidden"/>
+            <TextBox x:Name="Summary_word" TextWrapping="Wrap" Text="遊戲結束！&#xD;&#xA;你的分數：" FontSize="36" Background="White" BorderBrush="Transparent" Height="116" Canvas.Left="208" Canvas.Top="176" Width="312" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
+            <TextBox x:Name="Score_str" TextWrapping="Wrap" FontSize="36" Background="Transparent" Height="82" Canvas.Left="385" Canvas.Top="220" Width="152" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" BorderBrush="{x:Null}"/>
+            <Button x:Name="Replay" Content="再來一次" Canvas.Left="291" Canvas.Top="280" Height="61" Width="132" Click="Replay_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
+            <Button x:Name="Exit" Content="離開" Canvas.Left="292" Canvas.Top="386" Height="62" Width="132" Click="Exit_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
+            <Button x:Name="SquirrelButton1" Content="" Click="SquirrelButton_Click" Height="100" Canvas.Left="480" Canvas.Top="80" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" RenderTransformOrigin="-0.169,-0.29" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/squirrel.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SquirrelButton2" Click="SquirrelButton_Click" Height="100" Canvas.Left="225" Canvas.Top="134" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/squirrel.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SquirrelButton3" Click="SquirrelButton_Click" Height="100" Canvas.Left="420" Canvas.Top="99" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/squirrel.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SquirrelButton4" Click="SquirrelButton_Click" Height="100" Canvas.Left="225" Canvas.Top="318" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/squirrel.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SquirrelButton5" Click="SquirrelButton_Click" Height="100" Canvas.Left="500" Canvas.Top="244" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/squirrel.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SquirrelButton6" Click="SquirrelButton_Click" Height="100" Canvas.Left="428" Canvas.Top="294" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/squirrel.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SquirrelButton7" Click="SquirrelButton_Click" Height="100" Canvas.Left="46" Canvas.Top="100" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/squirrel.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SquirrelButton8" Click="SquirrelButton_Click" Height="100" Canvas.Left="57" Canvas.Top="318" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/squirrel.png"/>
+                </Button.Background>
+            </Button>
+            <TextBox x:Name="GameTitle" TextWrapping="Wrap" Text="打地鼠" FontSize="36" Background="Transparent" BorderBrush="Transparent" Canvas.Left="301" Canvas.Top="202" />
         </Canvas>
-        <TextBox x:Name="GameTitle" TextWrapping="Wrap" Text="打地鼠" Margin="562,215,566,408" FontSize="36" Background="Transparent" BorderBrush="Transparent" />
     </Grid>
 </Window>

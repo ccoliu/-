@@ -104,5 +104,8 @@
   <ItemGroup>
     <Resource Include="GameStart.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="squirrel.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

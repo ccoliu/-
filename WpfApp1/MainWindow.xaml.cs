@@ -1,23 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Threading.Tasks;
-using Microsoft.Kinect;
-using System.Windows.Controls;
-using System.Runtime.CompilerServices;
-using System.ComponentModel;
-
+﻿
 
 namespace WpfApp1
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Threading.Tasks;
+    using Microsoft.Kinect;
+    using System.Windows.Resources;
+    using System.Windows.Controls;
+    using System.Runtime.CompilerServices;
+    using System.ComponentModel;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// MainWindow.xaml 的互動邏輯
     /// </summary>
     public partial class MainWindow : Window
     {
+        [DllImport("user32.dll")]
+        static extern bool SetCursorPos(int X, int Y);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
+        //Mouse actions
+        private const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        private const int MOUSEEVENTF_LEFTUP = 0x04;
+        private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
+        private const int MOUSEEVENTF_RIGHTUP = 0x10;
         /// <summary>
         /// Radius of drawn hand circles
         /// </summary>
@@ -174,6 +187,13 @@ namespace WpfApp1
             }
         }
 
+        public ImageSource trackImage
+        {
+            get
+            {
+                return this.imageSource;
+            }
+        }
         public MainWindow()
         {
             // one sensor is currently supported
@@ -386,6 +406,11 @@ namespace WpfApp1
 
                             this.DrawHand(body.HandLeftState, jointPoints[JointType.HandLeft], dc);
                             this.DrawHand(body.HandRightState, jointPoints[JointType.HandRight], dc);
+
+                            if (Math.Abs(jointPoints[JointType.HandLeft].Y - jointPoints[JointType.HandRight].Y) < 10 && Math.Abs(jointPoints[JointType.HandLeft].X - jointPoints[JointType.HandRight].X) < 20)
+                            {
+                                DoMouseClick((uint)(jointPoints[JointType.HandLeft].X + jointPoints[JointType.HandRight].X)/2, (uint)(jointPoints[JointType.HandLeft].Y + jointPoints[JointType.HandRight].Y)/2);
+                            }
                         }
                     }
 
@@ -414,6 +439,12 @@ namespace WpfApp1
                     drawingContext.DrawEllipse(this.handLassoBrush, null, handPosition, HandSize, HandSize);
                     break;
             }
+        }
+
+        public void DoMouseClick(uint X, uint Y)
+        {
+            SetCursorPos((int)X + 80, (int)Y + 120);
+            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
         }
 
         private void Sensor_IsAvailableChanged(object sender, IsAvailableChangedEventArgs e)
