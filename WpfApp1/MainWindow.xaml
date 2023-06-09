@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="700"
+        Title="MainWindow" Height="630" Width="700"
         Loaded="MainWindow_Loaded">
     <Window.Resources>
         <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e"  />
@@ -14,14 +14,14 @@
     </Window.Resources>
     <Grid>
         <Canvas x:Name="ImageCanvas" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="700" Background="Transparent" >
-            <Image x:Name="ImageSource" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="700" Source="Forest.jpg"/>
-                
+            <Image x:Name="ImageSource" HorizontalAlignment="Left" Height="716" VerticalAlignment="Top" Width="871" Source="Forest2.jpg" Canvas.Left="-16"/>
+
             <!-- WARNING: IMPORTANT KINECT COMPONENT, DO NOT ADJUST UNLESS A MUST -->
-            <Image x:Name="TrackImage" HorizontalAlignment="Left" Height="600" Width="700" Source="{Binding trackImage}" Opacity="0.5" />
+            <Image x:Name="TrackImage" HorizontalAlignment="Left" Height="570" Width="669" Source="{Binding trackImage}" Opacity="0.5" Canvas.Left="31" Canvas.Top="30" />
             <!-- WARNING: IMPORTANT KINECT COMPONENT, DO NOT ADJUST UNLESS A MUST -->
-                
+
             <Button x:Name="TitleButton" Content="開始" Canvas.Left="293" Canvas.Top="330" Height="61" Width="130" Click="TitleButton_Click"/>
-            <TextBox x:Name="Time" TextWrapping="Wrap" FontSize="36" Background="Transparent" BorderBrush="Transparent" Height="82" Canvas.Left="20" Canvas.Top="638" Width="152" Text="60" Visibility="Hidden"/>
+            <TextBox x:Name="Time" TextWrapping="Wrap" FontSize="36" Background="#FFEFEEEE" BorderBrush="Transparent" Height="52" Canvas.Top="548" Width="52" Text="60" Visibility="Hidden"/>
             <TextBox x:Name="Summary_word" TextWrapping="Wrap" Text="遊戲結束！&#xD;&#xA;你的分數：" FontSize="36" Background="White" BorderBrush="Transparent" Height="116" Canvas.Left="208" Canvas.Top="176" Width="312" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <TextBox x:Name="Score_str" TextWrapping="Wrap" FontSize="36" Background="Transparent" Height="82" Canvas.Left="385" Canvas.Top="220" Width="152" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" BorderBrush="{x:Null}"/>
             <Button x:Name="Replay" Content="再來一次" Canvas.Left="291" Canvas.Top="280" Height="61" Width="132" Click="Replay_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
@@ -66,7 +66,7 @@
                     <ImageBrush ImageSource="/squirrel.png"/>
                 </Button.Background>
             </Button>
-            <TextBox x:Name="GameTitle" TextWrapping="Wrap" Text="打地鼠" FontSize="36" Background="Transparent" BorderBrush="Transparent" Canvas.Left="301" Canvas.Top="202" />
+            <TextBox x:Name="GameTitle" TextWrapping="Wrap" Text="打地鼠" FontSize="36" Background="#FFEFEEEE" BorderBrush="Transparent" Canvas.Left="301" Canvas.Top="202" />
         </Canvas>
     </Grid>
 </Window>
